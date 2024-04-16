@@ -1,5 +1,4 @@
 {
   "layout": "demo.njk",
-  "permalink": "/a/{{ page.fileSlug }}/",
-  "tags": "demo"
+  "permalink": "/a/{{ page.fileSlug }}/"
 }
