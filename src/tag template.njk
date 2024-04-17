@@ -7,11 +7,16 @@ pagination:
 permalink: /tags/{{ tag | slugify }}/
 ---
 
-<h1>Tagged “{{ tag }}”</h1>
-
-<ol>
+<h1 class="p-4 text-lg font-black">Tagged “{{ tag }}”</h1>
 {% set taglist = collections[ tag ] %}
-{% for post in taglist | reverse %}
-  <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
-{% endfor %}
-</ol>
+
+<section class="grid grid-cols-3 gap-4 p-4">
+  {% for post in taglist | reverse %}
+		<a href="{{ post.url }}" class="block p-4 bg-gray-400 border-black border group">
+			<h2 class="group-hover:underline">{{ post.data.title }}</h2>
+      {% if post.data.image %}
+        {% pic post.data.image, post.data.title, "object-contain" %}
+      {% endif %}
+		</a>
+  {% endfor %}
+</section>

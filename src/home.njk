@@ -4,14 +4,14 @@ permalink: /
 layout: page.njk
 ---
 
-<nav class="flex flex-wrap justify-center gap-2 bg-pink-200">
+<nav class="flex flex-wrap justify-center gap-2 p-4">
 	{% for tag in collections.showcase | getAllTags | filterTagList %}
 		{% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
 		<a class="bg-amber-200 hover:bg-amber-400 rounded-lg py-1 px-3" href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>
 	{% endfor %}
 </nav>
 
-<section class="grid grid-cols-3 gap-4 bg-blue-200">
+<section class="grid grid-cols-3 gap-4 p-4">
 	{% for post in collections.showcase %}
 		<a href="{{ post.url }}" class="block p-4 bg-gray-400 border-black border group">
 			<h2 class="group-hover:underline">{{ post.data.title }}</h2>
