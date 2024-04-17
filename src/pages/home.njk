@@ -1,0 +1,16 @@
+---
+title: Home
+permalink: /
+layout: list.njk
+eleventyExcludeFromCollections: true
+---
+<h1 class="text-2xl font-black mb-4">All demos</h1>
+
+<section class="grid grid-cols-3 gap-4 pb-16">
+	{% for post in collections.demo %}
+		<a href="{{ post.url }}" class="block p-4 bg-gray-400 border-black border group">
+			<h2 class="group-hover:underline">{{ post.data.title }}</h2>
+			{% pic post.data.image, post.data.title, "object-contain" %}
+		</a>
+	{% endfor %}
+</section>

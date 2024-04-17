@@ -1,16 +1,17 @@
 ---
-layout: "page.njk"
+layout: "list.njk"
 pagination:
   data: collections
   size: 1
   alias: tag
 permalink: /tags/{{ tag | slugify }}/
 ---
+<h1 class="text-2xl font-black mb-4">Tagged “{{ tag }}”</h1>
 
-<h1 class="p-4 text-lg font-black">Tagged “{{ tag }}”</h1>
-{% set taglist = collections[ tag ] %}
 
-<section class="grid grid-cols-3 gap-4 p-4">
+<section class="grid grid-cols-3 gap-4">
+
+  {% set taglist = collections[ tag ] %}
   {% for post in taglist | reverse %}
 		<a href="{{ post.url }}" class="block p-4 bg-gray-400 border-black border group">
 			<h2 class="group-hover:underline">{{ post.data.title }}</h2>
@@ -19,4 +20,5 @@ permalink: /tags/{{ tag | slugify }}/
       {% endif %}
 		</a>
   {% endfor %}
+
 </section>
