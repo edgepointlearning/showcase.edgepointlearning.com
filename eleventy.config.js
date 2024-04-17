@@ -29,7 +29,7 @@ module.exports = function(eleventyConfig) {
     return Array.from(tagSet);
   });
 	eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
-		return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
+		return (tags || []).filter(tag => ["all", "showcase"].indexOf(tag) === -1);
 	});
 
   return {

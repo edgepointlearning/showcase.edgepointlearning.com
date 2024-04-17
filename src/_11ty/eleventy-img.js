@@ -9,7 +9,7 @@ async function asyncImageShortcode(
   loading = 'lazy',
   decoding = 'async'
 ) {
-  let metadata = await Image(src, {
+  let metadata = await Image(`./src/images/${src}`, {
     widths: [375, 430, 768],
     formats: ['webp', 'jpeg'],
     urlPath: '/img/',
