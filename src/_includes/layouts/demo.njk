@@ -1,4 +1,8 @@
 ---
 layout: 'page.njk'
 ---
-{{ content | safe }}
+<main class="max-w-5xl mx-auto px-4">
+<h1 class="my-16 text-2xl font-black mb-4">{{ title }}</h1>
+  {% pic image, title, "object-contain max-w-lg mx-auto" %}
+  <p>{{ content | safe }}</p>
+</main> 
