@@ -2,7 +2,7 @@ module.exports = function(eleventyConfig) {
 
   // reload dev server from postcss output in package.json
   eleventyConfig.setServerOptions({
-    watch: ["_site/styles.css"],
+    watch: ["_site/assets/css/entry.css"],
   });
 
   // watch tailwind config for changes
