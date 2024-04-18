@@ -4,7 +4,7 @@ const lightningcss = require('postcss-lightningcss');
 
 const fs = require('fs');
 const path = require('path');
-const inputFile = './src/styles.css';
+const inputFile = './src/_includes/styles.css';
 const outputFile = './_site/styles.css';
 const inputFileContents = fs.readFileSync(inputFile, 'utf-8');
 

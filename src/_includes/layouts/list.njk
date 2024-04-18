@@ -1,9 +1,9 @@
 ---
 layout: 'page.njk'
 ---
-<main class="max-w-5xl mx-auto px-8 bg-white min-h-screen">
+<main class="max-w-5xl mx-auto px-4">
 
-	<svg viewBox="0 0 358 47" preserveAspectRatio="xMinYMin meet" alt="EdgePoint Learning Logo" class="max-w-md mx-auto py-16">
+	<svg viewBox="0 0 358 47" preserveAspectRatio="xMinYMin meet" alt="EdgePoint Learning Logo" class="max-w-sm mx-auto py-16">
 		<title>EdgePoint Learning logo</title>
 		<g fill="none" fill-rule="evenodd">
 			<path class="epl-horz-learning" fill="#9E9EA3" d="M242.067 32.285h-2.382V9.705h2.382v22.58zm6.96-7.115c.34 3.465 2.814 5.413 5.63 5.413 2.195 0 3.742-.897 5.04-2.258l1.486 1.33c-1.61 1.795-3.557 3-6.59 3-4.39 0-7.98-3.37-7.98-8.35 0-4.64 3.25-8.352 7.672-8.352 4.733 0 7.455 3.773 7.455 8.475 0 .216 0 .464-.03.742h-12.683zm0-1.763h10.3c-.248-2.907-1.918-5.444-5.104-5.444-2.784 0-4.887 2.32-5.196 5.444zM271.7 18.18c-1.887 0-3.372.495-4.857 1.175l-.71-1.95c1.762-.803 3.494-1.33 5.814-1.33 4.362 0 6.805 2.228 6.805 6.435v9.775h-2.29v-2.413c-1.112 1.454-2.968 2.753-5.783 2.753-2.97 0-5.97-1.67-5.97-5.01 0-3.404 2.78-5.198 6.83-5.198 2.04 0 3.49.28 4.92.68v-.556c0-2.87-1.77-4.36-4.77-4.36zm.092 6c-3 0-4.67 1.3-4.67 3.34 0 2.043 1.856 3.218 4.02 3.218 2.94 0 5.352-1.794 5.352-4.33V24.86a16.691 16.691 0 0 0-4.702-.68zm14.415 1.733v6.372h-2.382V16.293h2.382v4.176c1.175-2.66 3.495-4.58 6.526-4.46v2.57h-.185c-3.495 0-6.34 2.5-6.34 7.33zm12.527-2.784v9.15h-2.38V16.29h2.38v2.784c1.052-1.732 2.722-3.124 5.475-3.124 3.86 0 6.12 2.6 6.12 6.404v9.93h-2.38V22.94c0-2.97-1.61-4.824-4.43-4.824-2.76 0-4.8 2.01-4.8 5.01zm19.456-10.34h-2.722v-2.63h2.722v2.63zm7.733 10.33v9.15h-2.38V16.29h2.38v2.784c1.052-1.732 2.723-3.124 5.475-3.124 3.867 0 6.125 2.6 6.125 6.404v9.93h-2.382V22.94c0-2.97-1.6-4.824-4.42-4.824-2.75 0-4.79 2.01-4.79 5.01zm31.89 6.37c0 5.16-3.216 7.79-8.134 7.79-2.66 0-5.14-.74-7.27-2.23l1.08-1.86c1.82 1.33 3.86 2.04 6.15 2.04 3.52 0 5.81-1.95 5.81-5.69v-1.88c-1.39 1.85-3.34 3.37-6.28 3.37-3.84 0-7.52-2.85-7.52-7.52 0-4.7 3.71-7.58 7.51-7.58 3 0 4.95 1.48 6.25 3.21v-2.87h2.38V29.5zm-8.165-.56c3.032 0 5.877-2.17 5.877-5.45 0-3.31-2.845-5.45-5.877-5.45-3.03 0-5.537 2.07-5.537 5.41 0 3.27 2.57 5.47 5.54 5.47zm-31.643 3.34h-2.382V16.29h2.382v15.99z"/>
@@ -12,30 +12,13 @@ layout: 'page.njk'
 		</g>
 	</svg>
 
+	<nav class="flex flex-wrap justify-center gap-3 py-8">
 
+		<a href="/" class="tagOff {% if page.url == "/" %} tagOn {% endif %}">All</a>
 
-	<nav class="flex flex-wrap justify-center gap-2 pb-12">
-
-		<a
-			href="/"
-			class="tag
-				{% if page.url == "/" %}
-					bg-red-300 hover:bg-red-300 ring-red-400 ring-offset-2 ring-1 text-red-950
-				{% endif %}">
-			All</a>
-
-		{% for tag in collections.demo | getAllTags | filterTagList %}
-			{% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-
-				<a 
-					href="{{ tagUrl }}"
-					class="tag
-						{% if page.url == tagUrl %}
-							bg-red-300 hover:bg-red-400 ring-red-400 ring-offset-2 ring-1 text-red-950
-						{% endif %}">
-					{{ tag }}
-				</a>
-
+		{% for tag in collections.demo | getAllTags | filterTagList | sort %}
+			{% set tagUrl %}/tag/{{ tag | slugify }}/{% endset %}
+			<a href="{{ tagUrl }}" class="tagOff {% if page.url == tagUrl %} tagOn {% endif %}">{{ tag }}</a>
 		{% endfor %}
 
 	</nav>

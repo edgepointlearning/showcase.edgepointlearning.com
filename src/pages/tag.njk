@@ -4,21 +4,20 @@ pagination:
   data: collections
   size: 1
   alias: tag
-permalink: /tags/{{ tag | slugify }}/
+permalink: /tag/{{ tag | slugify }}/
 ---
 <h1 class="text-2xl font-black mb-4">Tagged “{{ tag }}”</h1>
 
-
 <section class="grid grid-cols-3 gap-4">
-
   {% set taglist = collections[ tag ] %}
-  {% for post in taglist | reverse %}
-		<a href="{{ post.url }}" class="block p-4 bg-gray-400 border-black border group">
-			<h2 class="group-hover:underline">{{ post.data.title }}</h2>
-      {% if post.data.image %}
-        {% pic post.data.image, post.data.title, "object-contain" %}
-      {% endif %}
-		</a>
-  {% endfor %}
+  {% for post in taglist %}
 
+		<a href="{{ post.url }}" class="block p-4 bg-slate-100 border-slate-400 border group">
+			<h2 class="group-hover:underline">{{ post.data.title }}</h2>
+			{% if post.data.image %}
+				{% pic post.data.image, post.data.title, "object-contain" %}
+			{% endif %}
+		</a>
+  
+  {% endfor %}
 </section>

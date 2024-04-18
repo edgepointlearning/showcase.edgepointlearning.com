@@ -8,9 +8,13 @@ eleventyExcludeFromCollections: true
 
 <section class="grid grid-cols-3 gap-4 pb-16">
 	{% for post in collections.demo %}
-		<a href="{{ post.url }}" class="block p-4 bg-gray-400 border-black border group">
+
+		<a href="{{ post.url }}" class="block p-4 bg-slate-100 border-slate-400 border group">
 			<h2 class="group-hover:underline">{{ post.data.title }}</h2>
-			{% pic post.data.image, post.data.title, "object-contain" %}
+			{% if post.data.image %}
+				{% pic post.data.image, post.data.title, "object-contain" %}
+			{% endif %}
 		</a>
+
 	{% endfor %}
 </section>

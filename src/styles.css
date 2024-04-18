@@ -1,9 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-  .tag {
-    @apply rounded py-1 px-2 capitalize text-sm text-orange-900 hover:text-orange-950 bg-orange-200 hover:bg-orange-300
-  }
-}

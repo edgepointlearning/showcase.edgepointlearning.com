@@ -11,16 +11,12 @@ module.exports = function(eleventyConfig) {
   // passhthrough static files
   eleventyConfig.addPassthroughCopy({ "./src/static": "/" });
 
-  // opt out of emulated passthrough during --serve
-  eleventyConfig.setServerPassthroughCopyBehavior("copy");
-
   // import external configs
   eleventyConfig.addPlugin(require('./src/_11ty/eleventy-img.js'))
   eleventyConfig.addPlugin(require('./src/_11ty/html.js'))
   eleventyConfig.addPlugin(require('./src/_11ty/postcss.js'))
 
-  // Return all the tags used in a collection
-  // https://github.com/11ty/eleventy-base-blog/blob/main/eleventy.config.js
+  // Return all the tags used in a collection https://github.com/11ty/eleventy-base-blog/blob/main/eleventy.config.js
   eleventyConfig.addFilter("getAllTags", collection => {
     let tagSet = new Set();
     for(let item of collection) {
@@ -35,7 +31,7 @@ module.exports = function(eleventyConfig) {
   return {
     dir: {
       input: 'src',
-      layouts: '_layouts',
+      layouts: '_includes/layouts',
     }
   };
 };
