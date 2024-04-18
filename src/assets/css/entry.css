@@ -10,7 +10,7 @@
     @apply 	
       flex items-center justify-center
       rounded-md px-3 py-2
-      uppercase text-sm font-medium text-blue-800 hover:text-blue-950
+      uppercase text-xs font-medium text-blue-800 hover:text-blue-950
     bg-blue-200 hover:bg-blue-400
       border-b-2 border-blue-400 hover:border-blue-700
   }
