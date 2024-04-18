@@ -1,0 +1,7 @@
+<a href="{{params.post.url}}" class="block max-w-lg mx-auto group rounded-b-lg bg-white border-t border-x border-b-4 border-blue-300 hover:border-black">
+  {% if params.post.data.image %}
+    <img src="/images/{{params.post.data.image}}" alt="{{params.post.data.title}}" class="w-full aspect-video overflow-hidden object-cover object-top bg-slate-300">
+  {% endif %}
+
+  <h2 class="p-4 font-semibold text-lg text-blue-700 group-hover:text-black group-hover:underline">{{params.post.data.title}}</h2>
+</a>

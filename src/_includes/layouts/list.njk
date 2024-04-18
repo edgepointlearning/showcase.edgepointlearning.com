@@ -1,7 +1,7 @@
 ---
-layout: 'page.njk'
+layout: 'base.njk'
 ---
-<main class="max-w-5xl mx-auto px-4">
+<div class="max-w-5xl mx-auto px-4">
 
 	<svg viewBox="0 0 358 47" preserveAspectRatio="xMinYMin meet" alt="EdgePoint Learning Logo" class="max-w-sm mx-auto py-16">
 		<title>EdgePoint Learning logo</title>
@@ -12,17 +12,15 @@ layout: 'page.njk'
 		</g>
 	</svg>
 
-	<nav class="flex flex-wrap justify-center gap-3 py-8">
-
+	<nav class="flex flex-wrap justify-center gap-3 pb-12">
 		<a href="/" class="tagOff {% if page.url == "/" %} tagOn {% endif %}">All</a>
 
 		{% for tag in collections.demo | getAllTags | filterTagList | sort %}
 			{% set tagUrl %}/tag/{{ tag | slugify }}/{% endset %}
 			<a href="{{ tagUrl }}" class="tagOff {% if page.url == tagUrl %} tagOn {% endif %}">{{ tag }}</a>
 		{% endfor %}
-
 	</nav>
 
 	{{ content | safe }}
 
-</main>
+</div>

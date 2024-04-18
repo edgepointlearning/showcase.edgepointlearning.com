@@ -9,12 +9,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addWatchTarget('./tailwind.config.js');
 
   // passhthrough static files
-  eleventyConfig.addPassthroughCopy({ "./src/static": "/" });
+  eleventyConfig.addPassthroughCopy({ "./src/assets/static": "/" });
 
   // import external configs
+  eleventyConfig.addPlugin(require('./src/_11ty/vimeo.js'))
   eleventyConfig.addPlugin(require('./src/_11ty/eleventy-img.js'))
-  eleventyConfig.addPlugin(require('./src/_11ty/html.js'))
   eleventyConfig.addPlugin(require('./src/_11ty/postcss.js'))
+  eleventyConfig.addPlugin(require('./src/_11ty/esbuild.js'))
+  eleventyConfig.addPlugin(require('./src/_11ty/html.js'))
 
   // Return all the tags used in a collection https://github.com/11ty/eleventy-base-blog/blob/main/eleventy.config.js
   eleventyConfig.addFilter("getAllTags", collection => {

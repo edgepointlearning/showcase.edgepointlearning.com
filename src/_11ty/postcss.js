@@ -1,39 +1,32 @@
 const postcss = require('postcss');
+const postcssimport =  require('postcss-import');
 const tailwind = require('tailwindcss');
 const lightningcss = require('postcss-lightningcss');
 
-const fs = require('fs');
-const path = require('path');
-const inputFile = './src/_includes/styles.css';
-const outputFile = './_site/styles.css';
-const inputFileContents = fs.readFileSync(inputFile, 'utf-8');
-
 module.exports = (eleventyConfig) => {
+  eleventyConfig.addTemplateFormats('css');
 
-  // write file via eleventy.after
-  eleventyConfig.on('eleventy.after', async () => {
-    try {
-      const result = await postcss([
-        tailwind,
-        lightningcss({
-          browsers: 'defaults',
-          lightningcssOptions: {
-            minify: (process.env.NODE_ENV === "production")
-          },
-        }),
-      ]).
-        process(inputFileContents, { from: inputFile, to: outputFile });
-
-      // Create the output directory if it doesn't exist
-      const outputDir = path.dirname(outputFile);
-      if (!fs.existsSync(outputDir)) {
-        await fs.promises.mkdir(outputDir, { recursive: true });
+  eleventyConfig.addExtension('css', {
+    outputFileExtension: 'css',
+    compile: async (content, inputPath) => {
+      if (inputPath !== './src/assets/css/entry.css') {
+        return;
       }
 
-      // Write the output file contents to disk
-      await fs.promises.writeFile(outputFile, result.css);
-    } catch (error) {
-      console.error(error);
+      return async () => {
+        let output = await postcss([
+          postcssimport,
+          tailwind,
+          lightningcss({
+            browsers: 'defaults',
+            lightningcssOptions: {
+              minify: (process.env.NODE_ENV === "production")
+            },
+          }),
+        ]).process(content, { from: inputPath });
+
+        return output.css;
+      }
     }
   });
 
