@@ -21,6 +21,6 @@
     ring-offset-2 ring-2 ring-amber-500/50
   }
   .cardGrid {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8
   }
 }
