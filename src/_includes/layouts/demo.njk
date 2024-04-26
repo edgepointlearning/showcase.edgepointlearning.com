@@ -1,7 +1,24 @@
 ---
 layout: 'base.njk'
 ---
+{% if vimeo or youtube %}
+  <div class="bg-gradient-to-r from-slate-900 via-slate-500 to-slate-900">
+    <section class="max-w-5xl mx-auto bg-black py-2">
+
+      {% if vimeo %}
+        {% vimeo '533690612', 'mx-auto' %}
+      {% endif %}
+      
+      {% if youtube %}
+        <lite-youtube videotitle="{{ youtube.title }}" videoid="{{ youtube.id }}" posterquality="maxresdefault">
+          <p><a class="lite-youtube-fallback" href="https://www.youtube.com/watch?v={{ youtube.id }}">Watch on YouTube: "{{ youtube.title }}"</a></p>
+        </lite-youtube>
+      {% endif %}
+    </section>
+  </div>
+{% endif %}
+
 <main class="max-w-5xl mx-auto px-4">
-  <h1 class="my-16 text-2xl font-black mb-4">{{ title }}</h1>
+  <h1 class="my-8 text-2xl font-black mb-4">{{ title }}</h1>
   {{ content | safe }}
 </main> 
