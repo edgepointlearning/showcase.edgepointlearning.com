@@ -8,13 +8,13 @@
     "@11ty/eleventy": "3.0.0-alpha.6",
     "@11ty/eleventy-img": "4.0.2",
     "cross-env": "7.0.3",
-    "esbuild": "0.20.2",
-    "html-minifier": "4.0.0",
+    "esbuild": "0.23.0",
+    "htmlnano": "2.1.1",
     "netlify-plugin-cache": "1.0.3",
-    "postcss": "8.4.38",
+    "postcss": "8.4.41",
     "postcss-import": "^16.1.0",
     "postcss-lightningcss": "1.0.0",
-    "rimraf": "^5.0.0",
-    "tailwindcss": "3.4.3"
+    "rimraf": "6.0.1",
+    "tailwindcss": "3.4.7"
   }
 }
